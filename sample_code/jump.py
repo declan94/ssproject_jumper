@@ -17,7 +17,7 @@ elif mType is '1':
     # cpp
     if os.path.isfile("./jump_cpp/output.txt"):
         os.remove("./jump_cpp/output.txt")
-    os.system("cd jump_cpp && jump.exe")
+    os.system("cd jump_cpp && jumper.exe")
     with open("./jump_cpp/output.txt") as f:
         dis = f.readlines(0)[0]
 
@@ -25,8 +25,7 @@ elif mType is '1':
 elif mType is '2':
     # matlab
     eng = matlab.engine.start_matlab()
-    eng.addpath("./matlab",nargout=0)
-    # eng.triarea(nargout=0)
+    eng.addpath("./jump_matlab",nargout=0)
     dis = eng.jumper()
     pass
 
