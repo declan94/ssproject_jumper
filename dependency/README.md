@@ -91,7 +91,7 @@
 
 使用 `adb` 命令实现截图获取和保存以及模拟按压功能
 
-`adb` 的可执行文件位于 [platform-tools-windows](./platform-tools-windows) (Windows) 和 [platform-tools-macos](./platform-tools-macos) (mac OS)
+`adb` 的可执行文件位于 [platform-tools-windows](./platform-tools-windows) (Windows) 和 [platform-tools-macosx](./platform-tools-macosx) (mac OS)
 
 #### 检验`adb`是否连接
 如果已经连接，则会在`List of devices attached`下面显示已连接的设备信息
