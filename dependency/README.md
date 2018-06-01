@@ -1,1 +1,92 @@
-平台的依赖环境，例如模拟器、python等的安装程序及说明放在这里
+# 模拟器
+
+* [安装](#安装)
+  * [Windows](#Windows)
+  * [Mac](#Mac)
+* [使用](#使用)
+  * [打开小程序](#打开小程序)
+  * [使用 adb](#使用-adb)
+
+## 安装
+
+### Windows
+
+#### 系统要求
+
+* Microsoft Windows 7, 8/8.1, 10 (32/64 位)
+
+* 64 位 CPU, 支持硬件虚拟化技术（且已在 BIOS 中开启此功能）`原则上第四代酷睿及以上的 Intel CPU 均支持此技术`
+
+* 至少 2GB 内存
+
+#### 准备工作
+
+* 下载 [Android Emulator](https://cloud.tsinghua.edu.cn/f/e1548fc6fdec474091bb/) 并 `解压`
+
+* 前往 [注册 Genymotion](https://www.genymotion.com/account/create/) 并根据提示前往注册邮箱 `验证` 刚注册的账户
+
+#### 开始安装
+
+* 安装 `Android Emulator` 文件夹下的 `VirtualBox-5.2.12-122591-Win.exe`，在弹出的 `安装设备` 窗口均选择 `是`，完成安装后关闭 `VirtualBox`
+
+* 继续安装 `genymotion-2.12.1.exe`，安装结束后打开程序，在弹出的窗口中点击最下方的 `Personal Use`，之后在窗口中输入刚注册的用户名与密码，获得个人授权
+
+* 如果点击 `Personal Use` 后没有弹出输入用户名与密码的窗口，请点击 `Settings` 并在 `Account` 条目下选择 `Sign in`，完成登录后关闭 `Genymotion`
+
+#### 导入模拟器
+
+* 进入 `开始菜单` 或者 `桌面`，打开 `Oracle VM VirtualBox`，点击左上角的 `管理`，再选择 `导入虚拟电脑`，文件选择 `Android Emulator` 文件夹下的 `Google Nexus 5X - 6.0.0 - API 23 - 1080x1920.ova`，按默认设置导入即可
+
+#### 设置模拟器并启动
+
+* 打开 `Genymotion`，选择 `Google Nexus 5X - 6.0.0 - API 23 - 1080x1920` 右侧的 🔧 图标，根据自己系统配置调整 `Processor`（CPU 核心数） 与 `Base Memory`（分配给模拟器的内存） 的设置，两项设置均不能超过当前硬件水平，请勿更改其他设置，完成后注意确定保存
+
+* 选中当前模拟器，并点击 `Start`，等待模拟器启动
+
+* 微信就在主屏幕正中间，Congrats!
+
+### Mac
+
+## 使用
+
+### 打开小程序
+
+* 进入微信，此时微信申请权限，请均同意
+
+* 登录微信后，点击右上角的 🔍 图标，在搜索栏输入 `tiaoyitiao`，点击 `跳一跳` 小程序即可打开
+
+### 使用 adb
+
+使用 `adb` 命令实现截图获取和保存以及模拟按压功能
+
+`adb` 的可执行文件位于 [platform-tools-windows](./platform-tools-windows) (Windows) 和 [platform-tools-macos](./platform-tools-macos) (mac OS)
+
+#### 执行截图
+
+```shell
+# Windows
+./adb.exe shell screencap -p /sdcard/autojump.png
+
+# macOS
+adb shell screencap -p /sdcard/autojump.png
+```
+
+#### 保存截图到本地
+
+```shell
+# Windows
+./adb.exe pull /sdcard/autojump.png .
+
+# macOS
+adb pull /sdcard/autojump.png .
+```
+
+#### 模拟触控位置与时间
+
+```shell
+# Windows
+./adb.exe shell input swipe x y x y time(ms)
+
+# macOS
+adb shell input swipe x y x y time(ms)
+```
