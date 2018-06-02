@@ -18,15 +18,15 @@ def check_end(img):
         for j in range(0,fliter.shape[1]):
             sum+=phi(fliter[i,j,:],img[i+1500,j+410,:])
             count+=1
-    print(sum)
-    print(count)
+  #  print(sum)
+  #  print(count)
     sum2=0
     count=0
     for i in range(0,fliter.shape[0]):
         for j in range(0,fliter.shape[1]):
             sum2+=phi(fliter[i,j,:],img[i+1347,j+410,:])
-    print("sum2",sum2)
-    return sum>50000 or sum2>55000
+   # print("sum2",sum2)
+    return sum>50000 ,sum2>55000
 
 
 def check_new_record(img):
@@ -36,12 +36,12 @@ def check_new_record(img):
     for i in range(0,fliter.shape[0]):
         for j in range(0,fliter.shape[1]):
             sum+=phi(fliter[i,j,:],img[i+230,j+430,:])
-    print(sum)
-    print(count)
+  #  print(sum)
+  #  print(count)
     return sum>15000
 
 def choose_number(x,fliter_x,y,fliter_y):
-    return abs(x-fliter_x)<100, abs(y-fliter_y)<100
+    return abs(x-fliter_x)<100 and abs(y-fliter_y)<100
    # return abs(x-fliter_x)50
 
 def check_score_window(bmp):
@@ -92,7 +92,7 @@ def check_score_window(bmp):
         col=bmp.shape[1]
         col=int(col/2)
         temp=bmp[:,:col]
-        cv.imwrite("./temp.bmp",temp)
+        #cv.imwrite("./temp.bmp",temp)
         temp_exp_row=0
         temp_count=0
         for i in range(0,temp.shape[0]):
@@ -103,7 +103,7 @@ def check_score_window(bmp):
         temp_exp_row/=temp_count
         row=int(bmp.shape[0]/2)
         temp2=bmp[:,col:]
-        cv.imwrite("./temp2.bmp",temp)
+      #  cv.imwrite("./temp2.bmp",temp)
         temp_exp_row2=0
         temp_count2=0
         for i in range(0,temp2.shape[0]):
@@ -120,59 +120,59 @@ def check_score_window(bmp):
         else:
             number=2
 
-    print(var)
+#    print(var)
 
     return number
 
 def check_score(bmp):
     window=bmp
     center=window[:,460:600]
-    cv.imwrite('./center.bmp',center)
+  #  cv.imwrite('./center.bmp',center)
     c=check_score_window(center)
-    print('center',c)
+ #   print('center',c)
     even=[-1,-1,-1,-1,-1,-1,-1,-1] #8
     odd=[-1,-1,-1,-1,-1,-1,-1] #7
     if c==-1 : #even
-        print('even')
+       # print('even')
         now=window[:,520:650]
-        cv.imwrite("./cv1.bmp",now)
+    #    cv.imwrite("./cv1.bmp",now)
         c=check_score_window(now)
         even[4]=c
-        print(c)
+     #   print(c)
         now=window[:,390:520]
-        cv.imwrite("./cv2.bmp",now)
+     #   cv.imwrite("./cv2.bmp",now)
         c=check_score_window(now)
         even[3]=c
-        print(c)
-        now=window[:,250:380]
+     #   print(c)
+        now=window[:,240:380]
         c=check_score_window(now)
         if c==-1:
             return 10*even[3]+even[4]
         even[2]=c
-        now=window[:,660:790]
+        now=window[:,660:800]
         c=check_score_window(now)
         even[5]=c
         return 1000*even[2]+100*even[3]+10*even[4]+even[5]
 
     else:   #odd
-        print('odd')
+     #   print('odd')
         odd[3]=c
-        now=window[:,355:475]
+        now=window[:,315:455]
         c=check_score_window(now)
-        print(c)
+     #   print(c)
         if c==-1:
             return odd[3]
         odd[2]=c
-        now=window[:,605:725]
+        now=window[:,605:745]
         c=check_score_window(now)
         odd[4]=c
-        print(c)
-        now=window[:,230:350]
+      #  print(c)
+        now=window[:,170:310]
         c=check_score_window(now)
         if now==-1:
             return odd[2]*100+odd[3]*10+odd[4]
         odd[1]=c
-        now=window[:,725:850]
+        now=window[:,750:890]
         c=check_score_window(now)
         odd[5]=c
         return 10000*odd[1]+odd[2]*1000+odd[3]*100+odd[4]*10+odd[5]
@@ -184,7 +184,7 @@ def check_result(img):
                return_value=-1 stand for the game is continuing
                return_value>=0 stand for the game is end and the return_value is the score of the player.'''
     result=check_end(img)
-    if result[0] or result[1]==False:
+    if result[0] + result[1]==False:
         return -1,[None,None]
     if result[0]:
         position=[1750,490]
@@ -209,7 +209,7 @@ print(check_score(gray))
 '''
 
 
-img=cv.imread("again1.png")
+img=cv.imread("end_num17.png")
 
 print(check_result(img))
 
