@@ -20,7 +20,13 @@ def check_end(img):
             count+=1
     print(sum)
     print(count)
-    return sum>70000
+    sum2=0
+    count=0
+    for i in range(0,fliter.shape[0]):
+        for j in range(0,fliter.shape[1]):
+            sum2+=phi(fliter[i,j,:],img[i+1347,j+410,:])
+    print("sum2",sum2)
+    return sum>70000 or sum2>55000
 
 
 def check_new_record(img):
@@ -35,7 +41,7 @@ def check_new_record(img):
     return sum>15000
 
 def choose_number(x,fliter_x,y,fliter_y):
-    return abs(x-fliter_x)<50 and abs(y-fliter_y)<50
+    return abs(x-fliter_x)<10 and abs(y-fliter_y)<10
    # return abs(x-fliter_x)<50
 
 def check_score_window(bmp):
@@ -187,7 +193,7 @@ img=cv.imread("7.png")
 
 print(check_result(img))
 
-'''
+
 for i in range(0,10):
     img=cv.imread(str(i)+".png")
-    print('***',i,check_result(img))'''
+    print('***',i,check_result(img))
