@@ -35,8 +35,8 @@ def check_new_record(img):
     return sum>15000
 
 def choose_number(x,fliter_x,y,fliter_y):
-   # return abs(x-fliter_x)<50 and abs(y-fliter_y)<50
-    return abs(x-fliter_x)<50
+    return abs(x-fliter_x)<50 and abs(y-fliter_y)<50
+   # return abs(x-fliter_x)<50
 
 def check_score_window(bmp):
     ex=[0,0]
@@ -55,23 +55,32 @@ def check_score_window(bmp):
     for i in range(0,bmp.shape[0]):
         for j in range(0,bmp.shape[1]):
             if(bmp[i,j]>=200):
-                var[0]+=(bmp[i,j]-ex[0])**2
-                var[1]+=(bmp[i,j]-ex[1])**2
+                var[0]+=(i-ex[0])**2
+                var[1]+=(j-ex[1])**2
     var[0]/=count
     var[1]/=count
 
     number=-1
     #judge number here
-    if choose_number(var[0],32221,var[1],38811):  #2 or 5
+    if choose_number(var[0],2098,var[1],1222):  #2 or 5
         number=2
-    elif choose_number(var[0],30002,var[1],39662): 
-        number=6
-    elif choose_number(var[0],35884,var[1],28703):
+    elif choose_number(var[0],1879,var[1],1185): #6 or 9
+        if ex[0]<75:
+            number=9
+        else:
+            number=6
+    elif choose_number(var[0],1910,var[1],187):
         number=1
-    elif choose_number(var[0],40472,var[1],28762):
+    elif choose_number(var[0],1875,var[1],894):
         number=7
-    elif choose_number(var[0],29865,var[1],34285):
+    elif choose_number(var[0],1424,var[1],1632):
         number=4
+    elif choose_number(var[0],2219,var[1],1461):
+        number=0
+    elif choose_number(var[0],1947,var[1],1313):
+        number=8
+    elif choose_number(var[0],2098,var[1],1185):
+        number=3
     else:
         number=-1
 
@@ -174,6 +183,11 @@ print(check_new_record(img))
 gray=change_to_gray(img,200)
 print(check_score(gray))
 '''
-img=cv.imread("result2.png")
+img=cv.imread("7.png")
 
 print(check_result(img))
+
+'''
+for i in range(0,10):
+    img=cv.imread(str(i)+".png")
+    print('***',i,check_result(img))'''
