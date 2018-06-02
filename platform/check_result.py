@@ -41,8 +41,8 @@ def check_new_record(img):
     return sum>15000
 
 def choose_number(x,fliter_x,y,fliter_y):
-    return abs(x-fliter_x)<10 and abs(y-fliter_y)<10
-   # return abs(x-fliter_x)<50
+    return abs(x-fliter_x)<100 and abs(y-fliter_y)<100
+   # return abs(x-fliter_x)50
 
 def check_score_window(bmp):
     ex=[0,0]
@@ -68,7 +68,7 @@ def check_score_window(bmp):
 
     number=-1
     #judge number here
-    if choose_number(var[0],2098,var[1],1222):  #2 or 5
+    if choose_number(var[0],2098,var[1],1222):  #2 or 5 or 3
         number=2
     elif choose_number(var[0],1879,var[1],1185): #6 or 9
         if ex[0]<75:
@@ -85,8 +85,6 @@ def check_score_window(bmp):
         number=0
     elif choose_number(var[0],1947,var[1],1313):
         number=8
-    elif choose_number(var[0],2098,var[1],1185):
-        number=3
     else:
         number=-1
 
@@ -104,7 +102,20 @@ def check_score_window(bmp):
                     temp_count+=1
         temp_exp_row/=temp_count
         row=int(bmp.shape[0]/2)
-        if temp_exp_row<row:
+        temp2=bmp[:,col:]
+        cv.imwrite("./temp2.bmp",temp)
+        temp_exp_row2=0
+        temp_count2=0
+        for i in range(0,temp2.shape[0]):
+            for j in range(0,temp2.shape[1]):
+                if temp2[i,j]>200:
+                    temp_exp_row2+=i
+                    temp_count2+=1
+        temp_exp_row2/=temp_count2
+        #print(temp_exp_row,temp_exp_row2)
+        if abs(temp_exp_row-temp_exp_row2)<2:
+            number=3
+        elif temp_exp_row<temp_exp_row2:
             number=5
         else:
             number=2
@@ -148,12 +159,14 @@ def check_score(bmp):
         odd[3]=c
         now=window[:,355:475]
         c=check_score_window(now)
+        print(c)
         if c==-1:
             return odd[3]
         odd[2]=c
-        now=window[:,605,725]
+        now=window[:,605:725]
         c=check_score_window(now)
         odd[4]=c
+        print(c)
         now=window[:,230:350]
         c=check_score_window(now)
         if now==-1:
@@ -189,11 +202,15 @@ print(check_new_record(img))
 gray=change_to_gray(img,200)
 print(check_score(gray))
 '''
-img=cv.imread("7.png")
+
+'''
+img=cv.imread("3.png")
 
 print(check_result(img))
 
 
+
+'''
 for i in range(0,10):
     img=cv.imread(str(i)+".png")
     print('***',i,check_result(img))
