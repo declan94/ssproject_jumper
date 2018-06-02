@@ -1,8 +1,8 @@
 # 模拟器
 
 * [安装](#安装)
-  * [Windows](#Windows)
-  * [Mac](#Mac)
+  * [Windows](#windows)
+  * [Mac](#mac)
 * [使用](#使用)
   * [打开小程序](#打开小程序)
   * [使用 adb](#使用-adb)
@@ -23,15 +23,11 @@
 
 * 下载 [Android Emulator](https://cloud.tsinghua.edu.cn/f/e1548fc6fdec474091bb/) 并 `解压`
 
-* 前往 [注册 Genymotion](https://www.genymotion.com/account/create/) 并根据提示前往注册邮箱 `验证` 刚注册的账户
-
 #### 开始安装
 
 * 安装 `Android Emulator` 文件夹下的 `VirtualBox-5.2.12-122591-Win.exe`，在弹出的 `安装设备` 窗口均选择 `是`，完成安装后关闭 `VirtualBox`
 
-* 继续安装 `genymotion-2.12.1.exe`，安装结束后打开程序，在弹出的窗口中点击最下方的 `Personal Use`，之后在窗口中输入刚注册的用户名与密码，获得个人授权
-
-* 如果点击 `Personal Use` 后没有弹出输入用户名与密码的窗口，请点击 `Settings` 并在 `Account` 条目下选择 `Sign in`，完成登录后关闭 `Genymotion`
+* 继续安装 `genymotion-2.12.1.exe`，安装结束后打开程序，在弹出的窗口中点击最下方的 `Personal Use`，不需要输入账户密码，进入主界面后关闭 `Genymotion`
 
 #### 导入模拟器
 
@@ -57,15 +53,11 @@
 
 * 下载 [Android Emulator](https://cloud.tsinghua.edu.cn/f/ab7a837b0e294e4e9c2f/) 并 `解压`
 
-* 前往 [注册 Genymotion](https://www.genymotion.com/account/create/) 并根据提示前往注册邮箱 `验证` 刚注册的账户
-
 #### 开始安装
 
 * 打开 `Android Emulator` 文件夹下的 `VirtualBox-5.2.12-122591-OSX.dmg`，在弹出的窗口中，打开`VirtualBox.pkg`，按照指示安装，安装过程中可能需要输入密码；另外，可能会遇到涉及Security的问题导致安装失败，这时打开`System Preferences/系统偏好设置`中`Security & Privacy/安全性与隐私`，点击右下角的`Allow/允许`，然后重新安装即可。
 
-* 打开 `genymotion-2.12.1.dmg`，将弹出窗口中的`Genymotion.app`和`Genymotion Shell.app`拖入`Applications`文件夹中即可，复制完成后打开程序，在弹出的窗口中点击最下方的 `Personal Use`，之后在窗口中输入刚注册的用户名与密码，获得个人授权
-
-* 如果点击 `Personal Use` 后没有弹出输入用户名与密码的窗口，请点击 `Settings` 并在 `Account` 条目下选择 `Sign in`，完成登录后关闭 `Genymotion`
+* 打开 `genymotion-2.12.1.dmg`，将弹出窗口中的`Genymotion.app`和`Genymotion Shell.app`拖入`Applications`文件夹中即可，复制完成后打开程序，在弹出的窗口中点击最下方的 `Personal Use`，之后不需要输入账户密码，直接进入主界面后关闭 `Genymotion`
 
 #### 导入模拟器
 * 进入 `launchpad/启动台`，打开 `VirtualBox`，点击屏幕顶端菜单栏的 `File/管理`，再选择 `Import Appliance/导入虚拟电脑`，文件选择 `Android Emulator` 文件夹下的 `Google Nexus 5X - 6.0.0 - API 23 - 1080x1920.ova`，按默认设置导入即可
