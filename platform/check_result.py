@@ -26,7 +26,7 @@ def check_end(img):
         for j in range(0,fliter.shape[1]):
             sum2+=phi(fliter[i,j,:],img[i+1347,j+410,:])
     print("sum2",sum2)
-    return sum>70000 or sum2>55000
+    return sum>50000 or sum2>55000
 
 
 def check_new_record(img):
@@ -41,7 +41,7 @@ def check_new_record(img):
     return sum>15000
 
 def choose_number(x,fliter_x,y,fliter_y):
-    return abs(x-fliter_x)<100 and abs(y-fliter_y)<100
+    return abs(x-fliter_x)<100, abs(y-fliter_y)<100
    # return abs(x-fliter_x)50
 
 def check_score_window(bmp):
@@ -183,16 +183,21 @@ def check_result(img):
        output: the result of the game 
                return_value=-1 stand for the game is continuing
                return_value>=0 stand for the game is end and the return_value is the score of the player.'''
-    if check_end(img)==False:
-        return -1
+    result=check_end(img)
+    if result[0] or result[1]==False:
+        return -1,[None,None]
+    if result[0]:
+        position=[1750,490]
+    else:
+        position=[1600,490]
     if check_new_record(img):
         gray=change_to_gray(img,100)
         gray=gray[540:700,:] 
-        return check_score(gray)
+        return check_score(gray),position
     else:
         gray=change_to_gray(img,200)
         gray=gray[300:450,:]
-        return check_score(gray)          
+        return check_score(gray),position       
     
     
 '''    
@@ -203,8 +208,8 @@ gray=change_to_gray(img,200)
 print(check_score(gray))
 '''
 
-'''
-img=cv.imread("3.png")
+
+img=cv.imread("again1.png")
 
 print(check_result(img))
 
@@ -213,4 +218,4 @@ print(check_result(img))
 '''
 for i in range(0,10):
     img=cv.imread(str(i)+".png")
-    print('***',i,check_result(img))
+    print('***',i,check_result(img))'''
