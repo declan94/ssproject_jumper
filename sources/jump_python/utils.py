@@ -6,7 +6,6 @@ author: Zhou Xiangxin
 time: 2018/6/3
 
 """
-import pyautogui
 import sys
 from PIL import Image
 import matplotlib.pyplot as plt
@@ -15,9 +14,7 @@ import ai
 import time
 import os
 import random
-# import pytesseract
 import re
-from server.gui_catch import *
 
 # hyper-parameters
 wc_top = 0
@@ -227,7 +224,7 @@ def jump(distance):
         press_time = distance * press_coefficient
         press_time = max(press_time, 200)  # 设置 200ms 是最小的按压时间
 
-    press_time = int(press_time)
+    # press_time = int(press_time)
     # press_time = press_time / 1000.
     # pyautogui.mouseDown()
     # time.sleep(press_time)
@@ -235,20 +232,6 @@ def jump(distance):
     return press_time
 
 
-if __name__ == '__main__':
-    # wc_screen_adjust()
-    pyautogui.moveTo(int(wc_left + wc_width / 2), int(wc_top + wc_height/2))
-    ai.init()
-    i, next_rest, next_rest_time = 0, random.randrange(3, 10), random.randrange(5, 10)
-    while True:
-        im = get_wc_screen()
-        piece_x, piece_y, board_x, board_y = find_piece_and_board(im)
-        press_time = jump(math.sqrt((board_x - piece_x) ** 2 + (board_y - piece_y) ** 2))
-        time.sleep(2)
-        if check_if_has_reset_button():
-            print('Game Over')
-            break
-        time.sleep(1)
 
 
 

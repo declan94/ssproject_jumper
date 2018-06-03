@@ -1,7 +1,4 @@
 # coding: utf-8
-
-# Copyright (c) 2018 BeiTown
-
 import os
 import pandas
 from sklearn.linear_model import LinearRegression
