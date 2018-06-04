@@ -55,11 +55,12 @@
 
 #### 开始安装
 
-* 打开 `Android Emulator` 文件夹下的 `VirtualBox-5.2.12-122591-OSX.dmg`，在弹出的窗口中，打开`VirtualBox.pkg`，按照指示安装，安装过程中可能需要输入密码；另外，可能会遇到涉及Security的问题导致安装失败，这时打开`System Preferences/系统偏好设置`中`Security & Privacy/安全性与隐私`，点击右下角的`Allow/允许`，然后重新安装即可。
+* 打开 `Android Emulator` 文件夹下的 `VirtualBox-5.2.12-122591-OSX.dmg`，在弹出的窗口中，打开`VirtualBox.pkg`，按照指示安装，安装过程中可能需要输入密码；另外，可能会遇到涉及 Security 的问题导致安装失败，这时打开`System Preferences/系统偏好设置`中`Security & Privacy/安全性与隐私`，点击右下角的`Allow/允许`，然后重新安装即可
 
 * 打开 `genymotion-2.12.1.dmg`，将弹出窗口中的`Genymotion.app`和`Genymotion Shell.app`拖入`Applications`文件夹中即可，复制完成后打开程序，在弹出的窗口中点击最下方的 `Personal Use`，之后不需要输入账户密码，直接进入主界面后关闭 `Genymotion`
 
 #### 导入模拟器
+
 * 进入 `launchpad/启动台`，打开 `VirtualBox`，点击屏幕顶端菜单栏的 `File/管理`，再选择 `Import Appliance/导入虚拟电脑`，文件选择 `Android Emulator` 文件夹下的 `Google Nexus 5X - 6.0.0 - API 23 - 1080x1920.ova`，按默认设置导入即可
 
 #### 设置模拟器并启动
@@ -69,7 +70,6 @@
 * 选中当前模拟器，并点击 `Start`，等待模拟器启动
 
 * 微信就在主屏幕正中间，Congrats!
-
 
 ## 使用
 
@@ -83,9 +83,10 @@
 
 使用 `adb` 命令实现截图获取和保存以及模拟按压功能
 
-`adb` 的可执行文件位于 [platform-tools-windows](./platform-tools-windows) (Windows) 和 [platform-tools-macosx](./platform-tools-macosx) (mac OS)
+`adb` 的可执行文件位于 [platform-tools-windows](./platform-tools-windows) (Windows) 和 [platform-tools-macos](./platform-tools-macos) (mac OS)
 
 #### 检验`adb`是否连接
+
 如果已经连接，则会在`List of devices attached`下面显示已连接的设备信息
 
 ```shell
@@ -97,9 +98,10 @@
 ```
 
 #### `adb`连接到模拟器
+
 如果`adb`未连接到设备，则需要执行以下命令
 
-IP在模拟器的标题栏中，如果看不到可以拉伸模拟器窗口，以显示出完整标题
+IP 在模拟器的标题栏中，如果看不到可以拉伸模拟器窗口，以显示出完整标题
 
 ```shell
 # Windows
