@@ -8,8 +8,8 @@ Platform for the Project Homework of Signal and System Lesson -- Wechat Jumper G
 
 ## 调试程序示例
 
-参考 👉[调用程序示例](./src/README.md)
+参考 👉[调试程序示例](./src/README.md)
 
 ## 测试程序示例
 
-参考 👉[调用程序示例](./test/README.md)
+参考 👉[测试程序示例](./test/README.md)
