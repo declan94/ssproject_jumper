@@ -11,7 +11,7 @@ def change_to_gray(img,theta):  #new record use 100 other use 200
     return gray
 
 def check_end(img):
-    fliter=cv.imread("./final.PNG")
+    fliter=cv.imread("./check_result/final.PNG")
     sum=0
     count=0
     for i in range(0,fliter.shape[0]):
@@ -209,9 +209,9 @@ print(check_score(gray))
 '''
 
 
-img=cv.imread("end_num17.png")
+# img=cv.imread("end_num17.png")
 
-print(check_result(img))
+# print(check_result(img))
 
 
 

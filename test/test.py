@@ -18,7 +18,7 @@ while True:
     img = cv2.imread("./autojump.png")
     score,pos = check.check_result(img)
     if score>=0:
-        with open("./result.txt", 'a') as f:S
+        with open("./result.txt", 'a') as f:
             f.write("score:",score)
             f.write("\n")
         if mType=='0' or mType=='1' or mType=='2':
