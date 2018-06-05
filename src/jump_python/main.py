@@ -6,15 +6,21 @@ import ai
 
 
 def read_image():
+	# if your OS is win
     os.system("../../dependency/platform-tools-windows/adb.exe shell screencap -p autojump.png")
     os.system("../../dependency/platform-tools-windows/adb.exe pull /sdcard/autojump.png .")
+	## if your OS is mac 
+	# os.system("../../dependency/platform-tools-macos/adb shell screencap -p autojump.png")
+	# os.system("../../dependency/platform-tools-macos/adb pull /sdcard/autojump.png .")
     im = Image.open("autojump.png")
     return im
 
 
 def click_screen(press_time):
+	# if your OS is win 
     os.system("../../dependency/platform-tools-windows/adb.exe swipe 50 50 50 50 " + str(int(press_time)))
-
+	## is your OS is mac 
+	# os.system("../../dependency/platform-tools-macos/adb swipe 50 50 50 50 " + str(int(press_time))
 
 def jumper():
 
