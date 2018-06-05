@@ -8,6 +8,9 @@ import cv2
 mType = sys.argv[1]
 dis = 0.0  # 学生返回的距离
 
+if mType == '2' or mType == '5':
+    eng = matlab.engine.start_matlab()
+
 while True:
     if mType =='0' or mType=='1' or mType=='2':
         os.system("cd ../dependency/platform-tools-windows && adb.exe shell screencap -p /sdcard/autojump.png")
@@ -46,7 +49,6 @@ while True:
         pass
     elif mType =='2' or mType=='5':
         # matlab
-        eng = matlab.engine.start_matlab()
         eng.addpath("./jump_matlab", nargout=0)
         dis = eng.jumper()
         pass
