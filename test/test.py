@@ -6,9 +6,8 @@ import matlab.engine
 mType = sys.argv[1]
 dis = 0.0  # 学生返回的距离
 
-os.system("cd ../dependency/platform-tools-windows && ./adb.exe shell screencap -p /sdcard/autojump.png")
-os.system(
-    "cd ../dependency/platform-tools-windows && ./adb.exe pull /sdcard/autojump.png .")
+os.system("cd ../dependency/platform-tools-windows && adb.exe shell screencap -p /sdcard/autojump.png")
+os.system("cd ../dependency/platform-tools-windows && adb.exe pull /sdcard/autojump.png ../../test")
 
 if mType is '0':
     # python
@@ -37,5 +36,4 @@ elif mType is '2':
 print(dis)
 dis = float(dis)
 time = int(dis * 1000)
-os.system(
-    "cd ../dependency/platform-tools-windows && ./adb.exe shell input swipe 800 800 800 800 {0}".format(time))
+os.system(    "cd ../dependency/platform-tools-windows && adb.exe shell input swipe 800 800 800 800 {0}".format(time))
