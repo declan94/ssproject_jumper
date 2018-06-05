@@ -16,8 +16,8 @@ while True:
         os.system("cd ../dependency/platform-tools-windows && adb.exe shell screencap -p /sdcard/autojump.png")
         os.system("cd ../dependency/platform-tools-windows && adb.exe pull /sdcard/autojump.png ../../test")
     else:
-        os.system("cd ../dependency/platform-tools-macosx && ./adb shell screencap -p /sdcard/autojump.png")
-        os.system("cd ../dependency/platform-tools-macosx && ./adb pull /sdcard/autojump.png ../../test")
+        os.system("cd ../dependency/platform-tools-macos && ./adb shell screencap -p /sdcard/autojump.png")
+        os.system("cd ../dependency/platform-tools-macos && ./adb pull /sdcard/autojump.png ../../test")
     img = cv2.imread("./autojump.png")
     score,pos = check.check_result(img)
     if score>=0:
@@ -27,7 +27,7 @@ while True:
         if mType=='0' or mType=='1' or mType=='2':
             os.system("cd ../dependency/platform-tools-windows && adb.exe shell input tap "+str(pos[0])+' '+str(pos[1]))
         else:
-            os.system("cd ../dependency/platform-tools-macosx && ./adb shell input tap "+str(pos[0])+' '+str(pos[1]))
+            os.system("cd ../dependency/platform-tools-macos && ./adb shell input tap "+str(pos[0])+' '+str(pos[1]))
 
     if mType == '0'or mType=='3':
         # python
@@ -60,4 +60,4 @@ while True:
     if mType=='0' or mType=='1' or mType=='2':
         os.system("cd ../dependency/platform-tools-windows && adb.exe shell input swipe 800 800 800 800 {0}".format(time))
     else:
-         os.system("cd ../dependency/platform-tools-macosx && ./adb shell input swipe 800 800 800 800 {0}".format(time))
+         os.system("cd ../dependency/platform-tools-macos && ./adb shell input swipe 800 800 800 800 {0}".format(time))
