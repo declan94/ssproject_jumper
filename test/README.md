@@ -2,6 +2,7 @@
 
 jump.py 为调用学生函数的主模块
 
+**如果您是windows系统，请使用一下命令；如果您是mac os系统只需要将以下命令中的参数0，1，2分别替换为3，4，5即可**
 * 如果使用 python，则需要修改 jump_python 文件夹中的 jumper.py，然后在命令行输入`python jump.py 0`运行
 * 如果使用 C++，则需要修改 jump_cpp 文件夹中的 jump.cpp，然后编译链接生成一个名为**jump.exe**的可执行文件，在命令行输入`python jump.py 1`运行
 * 如果使用 matlab，则需要修改 jump_matlab 文件夹中的 jumper.m，然后在命令行输入`python jump.py 2`运行
