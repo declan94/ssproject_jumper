@@ -8,13 +8,13 @@ Platform for the Project Homework of Signal and System Lesson -- Wechat Jumper G
 
 ## 调试程序示例
 
-参考 👉[调试程序示例](./src/README.md)
+参考 👉[调试程序示例](./src/README.md)  
 开发过程请使用调试程序  
 
 ## 测试程序示例
 
-参考 👉[测试程序示例](./test/README.md)  
-在提交前请跑通测试程序  
+参考 👉[测试程序示例](./test/README.md)   
+在提交前请跑通测试程序   
 
 ## 提交方式  
 - 提交时请在src文件夹下仅保留需要提交的代码版本  
