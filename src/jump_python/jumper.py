@@ -32,17 +32,6 @@ def jumper():
 
     # ******************
     # start your code here
-
-    #while True:
-    #    im = read_image()
-    #    piece_x, piece_y, board_x, board_y = find_piece_and_board(im)
-    #    press_time = jump(math.sqrt((board_x - piece_x) ** 2 + (board_y - piece_y) ** 2))
-    #    click_screen(press_time)
-    #    time.sleep(2)
-    #    # if check_if_has_reset_button():
-    #    #     print('Game Over')
-    #    #     break
-    #    # time.sleep(1)
 	piece_x, piece_y, board_x, board_y = find_piece_and_board(im)
     distance = math.sqrt((board_x - piece_x) ** 2 + (board_y - piece_y) ** 2)
 	return distance
