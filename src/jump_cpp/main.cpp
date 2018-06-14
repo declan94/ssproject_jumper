@@ -40,15 +40,33 @@ void click_screen(int press_time) {
 
 int main()
 {
-	while (1) {
-		gil::rgb8_image_t im = read_image();
-		double* pos = find_piece_and_board(im);
-		double piece_x = pos[0];
-		double piece_y = pos[1];
-		double board_x = pos[2];
-		double board_y = pos[3];
-		double press_time = jump(sqrt((board_x - piece_x)*(board_x - piece_x) + (board_y - piece_y)*(board_y - piece_y)));
-		click_screen(press_time);
-		Sleep(2000); //2000ms
-	}
+	//while (1) {
+	//	gil::rgb8_image_t im = read_image();
+	//	double* pos = find_piece_and_board(im);
+	//	double piece_x = pos[0];
+	//	double piece_y = pos[1];
+	//	double board_x = pos[2];
+	//	double board_y = pos[3];
+	//	double press_time = jump(sqrt((board_x - piece_x)*(board_x - piece_x) + (board_y - piece_y)*(board_y - piece_y)));
+	//	click_screen(press_time);
+	//	Sleep(2000); //2000ms
+	//}
+	double distance = 0.0;
+	gil::rgb8_image_t im;
+	gil::jpeg_read_image("autojump.jpg", img);
+	// ************************
+	// start your code here
+	double* pos = find_piece_and_board(im);
+	double piece_x = pos[0];
+	double piece_y = pos[1];
+	double board_x = pos[2];
+	double board_y = pos[3];
+	//double press_time = jump(sqrt((board_x - piece_x)*(board_x - piece_x) + (board_y - piece_y)*(board_y - piece_y)));
+	distance = sqrt((board_x - piece_x)*(board_x - piece_x) + (board_y-piece_y) * (board_y-piece_y));
+	// ************************
+	
+	//将距离保存在文件中
+    freopen("output.txt", "a", stdout);
+    printf("%lf", distance);
+    return 0;
 }
