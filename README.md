@@ -18,7 +18,7 @@ Platform for the Project Homework of Signal and System Lesson -- Wechat Jumper G
 - 提交时请在src文件夹下仅保留需要提交的代码版本  
 例如:  
 需要提交MATLAB版本的代码,则在`src`文件夹下仅保留`jump_matlab`  
-- 注意,程序的入口文件请命名为`main.m`或`main.py`或`main.cpp`  
+- 注意,程序的入口文件命名方式请详见[调试程序示例](./src/README.md)
 - 代码所调用的其他文件请全部置于`src`文件夹下,并使用 **相对路径**  
 
 ## debug方式  
