@@ -24,7 +24,7 @@ wc_height = 1920
 
 piece_base_height_1_2 = 50
 piece_body_width = 50
-press_coefficient = 1.375
+press_coefficient = 1.392
 
 
 def rgb2hsv(r, g, b):
