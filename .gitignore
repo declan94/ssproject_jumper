@@ -105,3 +105,7 @@ venv.bak/
 
 # vscode
 .vscode/*
+
+# screenshots and csvfile
+src/jump_python/autojump.png
+src/jump_python/jump_range.csv

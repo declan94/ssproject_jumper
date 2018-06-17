@@ -19,12 +19,12 @@ import re
 # hyper-parameters
 wc_top = 0
 wc_left = 0
-wc_width = 540
-wc_height = 960
+wc_width = 1080
+wc_height = 1920
 
 piece_base_height_1_2 = 50
 piece_body_width = 50
-press_coefficient = 4.10
+press_coefficient = 1.375
 
 
 def rgb2hsv(r, g, b):
