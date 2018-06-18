@@ -11,6 +11,10 @@ Platform for the Project Homework of Signal and System Lesson -- Wechat Jumper G
 参考 👉[调试程序示例](./src/README.md)  
 开发过程请使用调试程序
 
+## 示例程序
+
+可以参考周相鑫同学提供的参考实现方式 👉[示例程序](./example/)
+
 ## 测试程序示例
 
 参考 👉[测试程序示例](./test/README.md)  
