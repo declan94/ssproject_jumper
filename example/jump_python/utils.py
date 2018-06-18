@@ -161,7 +161,7 @@ def find_piece_and_board(im):
                 if abs(j - piece_x) < piece_body_width:
                     continue
                 if (abs(pixel[0] - last_pixel[0]) + abs(pixel[1] - last_pixel[1]) + abs(pixel[2] - last_pixel[2])
-                    > 10) and (abs(pixel[0] - r) + abs(pixel[1] - g) + abs(pixel[2] - b) > 10):
+                        > 10) and (abs(pixel[0] - r) + abs(pixel[1] - g) + abs(pixel[2] - b) > 10):
                     if left_value == j:
                         left_count = left_count + 1
                     else:
@@ -180,7 +180,7 @@ def find_piece_and_board(im):
                 if abs(j - piece_x) < piece_body_width:
                     continue
                 if (abs(pixel[0] - last_pixel[0]) + abs(pixel[1] - last_pixel[1]) + abs(pixel[2] - last_pixel[2])
-                    > 10) and (abs(pixel[0] - r) + abs(pixel[1] - g) + abs(pixel[2] - b) > 10):
+                        > 10) and (abs(pixel[0] - r) + abs(pixel[1] - g) + abs(pixel[2] - b) > 10):
                     if right_value == j:
                         right_count = left_count + 1
                     else:
@@ -230,8 +230,3 @@ def jump(distance):
     # time.sleep(press_time)
     # pyautogui.mouseUp()
     return press_time
-
-
-
-
-

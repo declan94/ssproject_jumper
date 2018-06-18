@@ -1,4 +1,6 @@
 from jumper import *
+
+
 def main():
     while True:
         im = read_image()
@@ -12,6 +14,7 @@ def main():
         #     print('Game Over')
         #     break
         # time.sleep(1)
-		
+
+
 if __name__ == '__main__':
-	main()
+    main()

@@ -10,17 +10,18 @@ dis = 0.0  # 学生返回的距离
 
 
 while True:
-    os.system("cd ../dependency/platform-tools-windows && ./adb.exe shell screencap -p /sdcard/autojump.png")
+    os.system(
+        "cd ../dependency/platform-tools-windows && ./adb.exe shell screencap -p /sdcard/autojump.png")
     os.system(
         "cd ../dependency/platform-tools-windows && ./adb.exe pull /sdcard/autojump.png .")
-    img=cv2.imread("./autojump.png")
-    score,pos=check_result.check_result(img)
-    if score>=0:
-        with open("./result.txt",a) as f:
-            f.write("score:",score)
+    img = cv2.imread("./autojump.png")
+    score, pos = check_result.check_result(img)
+    if score >= 0:
+        with open("./result.txt", a) as f:
+            f.write("score:", score)
             f.write("\n")
         os.system(
-        "cd ../dependency/platform-tools-windows && ./adb.exe shell input tap "+str(pos[0])+' '+str(pos[1]))
+            "cd ../dependency/platform-tools-windows && ./adb.exe shell input tap "+str(pos[0])+' '+str(pos[1]))
         pass
 
     if mType is '0':
