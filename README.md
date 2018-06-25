@@ -1,37 +1,57 @@
-# ssproject_jumper
+# 跳不停
 
-Platform for the Project Homework of Signal and System Lesson -- Wechat Jumper Game Robot
+信号与系统课程大作业 “跳不停”
 
-## 模拟器安装与使用
+## 安装模拟器与配置环境
 
 参考 👉[模拟器](./dependency/README.md)
 
-## 调试程序示例
+## 开始开发
 
-参考 👉[调试程序示例](./src/README.md)  
+请使用 `src` 文件夹进行开发
+
+### 试一试！
+
+打开模拟器，并在 `cmd` 或 `terminal` 中使用 `adb` 模拟按压
+
+```shell
+# Windows
+./dependency/platform-tools-windows/adb.exe shell input swipe 500 1600 500 1700 500
+
+# macOS
+./dependency/platform-tools-macos/adb shell input swipe 500 1600 500 1700 500
+```
+
+看到触控效果了吗？
+
+### 正式开始
+
+更多 `adb` 使用方法及调试用的程序示例请参考 👉[调试程序示例](./src/README.md)
+
 开发过程请使用调试程序
 
-## 测试程序示例
+## 准备提交
 
-参考 👉[测试程序示例](./test/README.md)  
-在提交前请跑通测试程序
+在完成代码后，请使用 `test` 文件夹完成最终提交代码的整合
 
-## 提交方式
+`test` 文件夹下的程序即为作业批改时使用的程序，务必确保在提交前跑通测试程序
 
-- 提交时请在 src 文件夹下仅保留需要提交的代码版本  
-  例如:  
-  需要提交 MATLAB 版本的代码,则在`src`文件夹下仅保留`jump_matlab`
-- 注意,程序的入口文件命名方式请详见[调试程序示例](./src/README.md)
-- 代码所调用的其他文件请全部置于`src`文件夹下,并使用 **相对路径**
-
-## debug 方式
-
-建议在获取图片之后, 将自己的检测的位置 Plot 在获取的图片上, 再将图片打印
+具体方法请参考 👉[测试程序示例](./test/README.md)
 
 ## 注意事项
 
-- 程序中 pause/sleep/press_time 的时间请不要设置的过小或过大, 在测试程序里面有针对此设计异常处理, 请合理设置 pause/sleep/press_time 时间,以免无法在测评获得游戏得分
-- 在程序运行过程中,可以在`src`文件夹下读写文件, 请不要恶意写入过大/大量的文件
-- baseline 仅为参考, 为大家提供 **获取模拟器截屏** 和 **点击模拟器** 的函数参考(请注意自己的操作系统 windows/macos,在示例代码里有相关说明), 思路不具备任何参考意义
+- 调用 `adb` 时请确认当前路径，并使用相对路径进行调用，如在 `src` 文件夹下，应使用 `../dependency/` 的相对路径
+
+- 若使用 `Visual Studio` 进行调试，也请复制 `dependency` 文件夹到你的当前项目目录下
+
+- 请注意单次跳跃的程序运行时间不能过长，否则批改程序会主动终止你的进程
+
 - 请注意代码风格, 必要模块可加简要注释
-- 如有任何使用问题, 可在 issue 提交问题, 我们会尽快解决
+
+- 如有任何使用问题, 可在 `Issues` 提交问题, 我们会尽快解决
+
+## 示例程序
+
+该示例程序由 `周相鑫` 同学提供，仅供参考
+
+请参考 👉[示例程序](./example/README.md)
