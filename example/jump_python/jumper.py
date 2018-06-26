@@ -9,14 +9,17 @@ ai.init()
 
 def read_image():
     # if your OS is win
-    os.system(
-        "cd ../../dependency/platform-tools-windows && adb.exe shell screencap -p /sdcard/autojump.png")
-    os.system("cd ../../dependency/platform-tools-windows && adb.exe pull /sdcard/autojump.png ../../src/jump_python")
+    os.system("cd ../../dependency/platform-tools-windows && adb.exe shell screencap -p /sdcard/autojump.png")
+    os.system("cd ../../dependency/platform-tools-windows && adb.exe pull /sdcard/autojump.png ../../example/jump_python")
+
     # if your OS is mac
     # os.system("cd ../../dependency/platform-tools-macos && ./adb shell screencap -p /sdcard/autojump.png")
-    # os.system("cd ../../dependency/platform-tools-macos && ./adb pull /sdcard/autojump.png ../../src/jump_python")
+    # os.system("cd ../../dependency/platform-tools-macos && ./adb pull /sdcard/autojump.png ../../example/jump_python")
+
     im = Image.open("autojump.png")
-    return im
+    if im.size[0] > im.size[1]:
+        im = im.transpose(Image.ROTATE_270)
+        im.save("./autojump.png")
 
 
 def click_screen(press_time):
@@ -32,6 +35,9 @@ def jumper():
     # print(screenShot)
     distance = 0.0
     screenShot = Image.open('./autojump.png')
+    print(screenShot.size)
+    screenShot = screenShot.rotate(270)
+    print(screenShot.size)
 
     # ******************
     # start your code here
