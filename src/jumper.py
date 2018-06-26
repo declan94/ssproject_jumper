@@ -13,7 +13,7 @@ def get_screenshot():
 
 def press_screen(distance):
     # Change 'platform-tools-windows' to 'platform-tools-macos' and 'adb.exe' to 'adb' on macOS; you may need to use `chmod +X ../dependency/platform-tools-macos/adb` first
-    press_time = int(distance * time_coeff / 1000)
+    press_time = int(distance * time_coeff)
     system('cd dependency/platform-tools-windows/ && adb.exe shell input swipe 500 1600 500 1602 ' + str(press_time))
 
 
