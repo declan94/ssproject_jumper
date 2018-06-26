@@ -35,9 +35,6 @@ def jumper():
     # print(screenShot)
     distance = 0.0
     screenShot = Image.open('./autojump.png')
-    print(screenShot.size)
-    screenShot = screenShot.rotate(270)
-    print(screenShot.size)
 
     # ******************
     # start your code here
