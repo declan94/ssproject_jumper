@@ -62,7 +62,7 @@ while True:
 # dis 为学生返回的距离
     print(dis)
     dis = float(dis)
-    time = int(dis * 1000)
+    time = int(dis * 1.392)
     if mType == '0' or mType == '1' or mType == '2':
         os.system(
             "cd ../dependency/platform-tools-windows && adb.exe shell input swipe 800 800 800 800 {0}".format(time))
