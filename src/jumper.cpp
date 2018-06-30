@@ -16,19 +16,21 @@ std::string toString(int number)
  */
 void getScreenshot()
 {
-    // Change 'platform-tools-windows' to 'platform-tools-macos' and 'adb.exe' to 'adb' on macOS; you may need to use `chmod +X ../dependency/platform-tools-macos/adb` first
-    system("cd dependency/platform-tools-windows/ && adb.exe shell screencap -p /sdcard/autojump.png");
-    system("cd dependency/platform-tools-windows/ && adb.exe pull /sdcard/autojump.png ../../");
+    // Change 'platform-tools-windows' to 'platform-tools-macos' and 'adb.exe' to './adb' on macOS; you may need to use `chmod +X ../dependency/platform-tools-macos/adb` first
+    system("cd ../dependency/platform-tools-windows/ && adb.exe shell screencap -p /sdcard/autojump.png");
+    system("cd ../dependency/platform-tools-windows/ && adb.exe pull /sdcard/autojump.png ../../src/");
 }
 
 void pressScreen(double distance)
 {
-    // Change 'platform-tools-windows' to 'platform-tools-macos' and 'adb.exe' to 'adb' on macOS; you may need to use `chmod +X ../dependency/platform-tools-macos/adb` first
+    // Change 'platform-tools-windows' to 'platform-tools-macos' and 'adb.exe' to './adb' on macOS; you may need to use `chmod +X ../dependency/platform-tools-macos/adb` first
     int pressTime = distance * timeCoeff;
-    system(("cd dependency/platform-tools-windows/ && adb.exe shell input swipe 500 1600 500 1602 " + toString(pressTime)).c_str());
+    system(("cd ../dependency/platform-tools-windows/ && adb.exe shell input swipe 500 1600 500 1602 " + toString(pressTime)).c_str());
 }
 
 int main()
 {
     // Code here
+
+    return 0;
 }
