@@ -1,6 +1,6 @@
 function [ piece_x, piece_y, board_x, new_board_y ] = find_piece_and_board( im )
-%FIND_PIECE_AND_BOARD 此处显示有关此函数的摘要
-%   此处显示详细说明
+%FIND_PIECE_AND_BOARD 姝ゅ鏄剧ず鏈夊叧姝ゅ嚱鏁扮殑鎽樿
+%   姝ゅ鏄剧ず璇︾粏璇存槑
     piece_base_height_1_2 = 50;
     piece_body_width = 50;
 
@@ -92,7 +92,7 @@ function [ piece_x, piece_y, board_x, new_board_y ] = find_piece_and_board( im )
                 if abs(j-piece_x)<piece_body_width
                     continue
                 end
-                if (abs(pixel(1,1,1)-last_pixel(1,1,1))+abs(pixel(1,1,2)-last_pixel(1,1,2))+abs(pixel(1,1,3)-last_pixel(1,1,3))>10) && (abs(pixel(1,1,1)-r)+abs(pixel(1,1,2)-g)+abs(pixel(1,1,3)-b)>10)
+                if (abs(pixel(1,1,1)-last_pixel(1,1,1))+abs(pixel(1,1,2)-last_pixel(1,1,2))+abs(pixel(1,1,3)-last_pixel(1,1,3))>10) && (abs(int16(pixel(1,1,1))-r)+abs(int16(pixel(1,1,2))-g)+abs(int16(pixel(1,1,3))-b)>10)
                     if left_value==j
                         left_count=left_count+1;
                     else
@@ -112,7 +112,7 @@ function [ piece_x, piece_y, board_x, new_board_y ] = find_piece_and_board( im )
                 if abs(j-piece_x)<piece_body_width
                     continue
                 end
-                if (abs(pixel(1,1,1)-last_pixel(1,1,1))+abs(pixel(1,1,2)-last_pixel(1,1,2))+abs(pixel(1,1,3)-last_pixel(1,1,3))>10)&&(abs(pixel(1,1,1)-r)+abs(pixel(1,1,2)-g)+abs(pixel(1,1,3)-b)>10)
+                if (abs(pixel(1,1,1)-last_pixel(1,1,1))+abs(pixel(1,1,2)-last_pixel(1,1,2))+abs(pixel(1,1,3)-last_pixel(1,1,3))>10)&&(abs(int16(pixel(1,1,1))-r)+abs(int16(pixel(1,1,2))-g)+abs(int16(pixel(1,1,3))-b)>10)
                     if right_value==j
                         right_count=left_count+1;
                     else
