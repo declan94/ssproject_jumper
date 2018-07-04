@@ -1,12 +1,14 @@
-from PIL import Image
+# Import modules
 
 
 def jumper():
-    distance = 0.0
-    screenShot = Image.open('./autojump.png')
-    # print(screenShot)
+    # Read screenshot at '../autojump.png'
+    # You can also use any file in this directory at will
+    pass
 
-    # ******************
-    # start your code here
-    # ******************
-    return distance
+    # Process screenshot
+    time = 0
+    pass
+
+    # return press time as int
+    return int(time)

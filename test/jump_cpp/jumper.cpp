@@ -1,18 +1,26 @@
-#include <stdio.h>
+/**
+ * Attention!
+ * This source file only serves as an example.
+ * You need to compile all your source(s) and header(s) (if any) in Release Mode.
+ * Compiled binary should be renamed as "jumper.exe" and be put in this directory.
+ * You should also put all your source(s) and header(s) in this directory for review.
+ */
+
+#include <iostream>
+using namespace std;
+// Include headers
 
 int main()
 {
-    //通过此目录下的图片计算两个相邻方块之间的距离
-    //最后需要输出的参数，即两个方块之间的距离
-    double distance = 0.0;
+    // Read screenshot at "../autojump.png"
 
-    // ****************************
-    // start your code here
+    // You can also use any file in this directory at will
 
-    // ****************************
+    // Process screenshot
+    int pressTime = 0;
 
-    //将距离保存在文件中
-    freopen("output.txt", "a", stdout);
-    printf("%lf", distance);
+    // Print press time as int
+    cout << pressTime << endl;
+
     return 0;
 }

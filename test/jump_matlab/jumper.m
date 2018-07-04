@@ -1,9 +1,11 @@
-function dis = jumper();
-screenshot = imread('./autojump.png');
+function time = jumper()
 
-% *****************************
-% start your code here
+% Read screenshot at '../autojump.png'
+% You can also use any file in this directory at will
 
-% *****************************
-dis = 0.0;
+% Process screenshot
+
+% return press time
+time = 0;
+
 end
