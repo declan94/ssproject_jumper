@@ -1,6 +1,6 @@
 function time = jumper()
 
-% Read screenshot at '../autojump.png'
+% Read screenshot at './autojump.png'
 % You can also use any file in this directory at will
 
 % Process screenshot
