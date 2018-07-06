@@ -1,102 +1,95 @@
-import sys
+import importlib
 import os
+import shutil
 import subprocess
+import sys
 import time
-import cv2
-import check_result.check_result as check
+import zipfile
 
+uploads = []
+for upload_file in os.listdir("./uploads"):
+    if upload_file.endswith(".zip"):
+        uploads.append(upload_file)
 
-if len(sys.argv) != 2:
-    print("Insufficient arguments. Exiting...")
-    exit()
+screenshots = []
+for screenshot in os.listdir("./pictures"):
+    if screenshot.endswith(".png"):
+        screenshots.append(screenshot)
 
-platform = sys.platform
-if platform != "win32" and platform != "darwin":
-    print("Unsupported platform. Exiting...")
-    exit()
+for upload_file in uploads:
+    with zipfile.ZipFile("./uploads/" + upload_file, "r") as zip_ref:
+        zip_ref.extractall(".")
 
-lang = sys.argv[1].lower()
-if lang != "python" and lang != "cpp" and lang != "matlab":
-    print("Unsupported language. Exiting...")
-    exit()
-
-if lang == "matlab":
-    if not os.path.isfile('./jump_matlab/jumper.m'):
-        print('Source code does not exist! Exiting...')
+    student_id = upload_file[:upload_file.index('.')]
+    if os.path.isdir('./' + student_id + '/python'):
+        lang = 'python'
+        work_dir = './' + student_id + '/python'
+    elif os.path.isdir('./' + student_id + '/matlab'):
+        lang = 'matlab'
+        work_dir = './' + student_id + '/matlab'
+    elif os.path.isdir('./' + student_id + '/cpp'):
+        lang = 'cpp'
+        work_dir = './' + student_id + '/cpp'
+    else:
+        print('Broken upload structure! Exiting...')
         exit()
-    import matlab.engine
-    engine = matlab.engine.start_matlab()
-elif lang == "python":
-    if not os.path.isfile('./jump_python/jumper.py'):
-        print('Source code does not exist! Exiting...')
+
+    platform = sys.platform
+    if platform != "win32" and platform != "darwin":
+        print("Unsupported platform. Exiting...")
         exit()
-    import jump_python.jumper as jumper
-else:
-    if platform == "win32":
-        if not os.path.isfile('./jump_cpp/jumper.exe'):
-            print('Executable file does not exist! Exiting...')
+
+    if lang == "matlab":
+        if not os.path.isfile(work_dir + '/jumper.m'):
+            print('Source code does not exist! Exiting...')
             exit()
-    if platform == "darwin":
-        if not os.path.isfile('./jump_cpp/jumper'):
-            print('Executable file does not exist! Exiting...')
+        import matlab.engine
+        engine = matlab.engine.start_matlab()
+    elif lang == "python":
+        if not os.path.isfile(work_dir + '/jumper.py'):
+            print('Source code does not exist! Exiting...')
             exit()
-
-
-def get_screenshot():
-    if platform == "win32":
-        os.system(
-            'cd ../dependency/platform-tools-windows/ && adb.exe shell screencap -p /sdcard/autojump.png')
-        os.system(
-            'cd ../dependency/platform-tools-windows/ && adb.exe pull /sdcard/autojump.png ../../test/')
+        for f in os.listdir(work_dir):
+            shutil.copy(work_dir + '/' + f, './' + student_id)
+        jumper = importlib.import_module(student_id + '.jumper')
     else:
-        os.system(
-            'cd ../dependency/platform-tools-macos/ && ./adb shell screencap -p /sdcard/autojump.png')
-        os.system(
-            'cd ../dependency/platform-tools-macos/ && ./adb pull /sdcard/autojump.png ../../test/')
-
-
-def press_screen(press_time):
-    if platform == "win32":
-        os.system(
-            'cd ../dependency/platform-tools-windows/ && adb.exe shell input swipe 500 1600 500 1602 ' + str(press_time))
-    else:
-        os.system(
-            'cd ../dependency/platform-tools-macos/ && ./adb shell input swipe 500 1600 500 1602 ' + str(press_time))
-
-
-def restart(pos):
-    if platform == "win32":
-        os.system(
-            'cd ../dependency/platform-tools-windows/ && adb.exe shell input tap '+str(pos[0])+' '+str(pos[1]))
-    else:
-        os.system(
-            'cd ../dependency/platform-tools-macos/ && ./adb shell input tap ' + str(pos[0]) + ' ' + str(pos[1]))
-
-
-while True:
-    get_screenshot()
-    screenshot = cv2.imread('./autojump.png')
-
-    score, restart_pos = check.check_result(screenshot)
-    if score >= 0:
-        with open("./result.txt", 'a') as f:
-            f.write("score: ", score)
-            f.write("\n")
-        restart(restart_pos)
-
-    press_time = 0
-    if lang == "python":
-        press_time = jumper.jumper()
-    elif lang == "cpp":
         if platform == "win32":
-            press_time = subprocess.getoutput('cd jump_cpp && jumper.exe')
+            if not os.path.isfile(work_dir + '/jumper.exe'):
+                print('Executable file does not exist! Exiting...')
+                exit()
         if platform == "darwin":
-            press_time = subprocess.getoutput('cd jump_cpp && ./jumper')
-    else:
-        engine.addpath("./jump_matlab")
-        press_time = engine.jumper()
+            if not os.path.isfile(work_dir + '/jumper'):
+                print('Executable file does not exist! Exiting...')
+                exit()
 
-    print('Press time: ' + str(press_time))
-    press_screen(press_time)
+    start_time = time.time()
+    error_in_total = 0
+    for screenshot in screenshots:
+        shutil.copy2('./pictures/' + screenshot, work_dir + '/autojump.png')
+        original_distance = screenshot[:screenshot.index('_')]
+        calculated_distance = 0
+        if lang == "python":
+            os.chdir(work_dir)
+            calculated_distance = jumper.jumper()
+            os.chdir('../../')
+        elif lang == "cpp":
+            if platform == "win32":
+                calculated_distance = subprocess.getoutput(
+                    'cd ' + work_dir + ' && jumper.exe')
+            if platform == "darwin":
+                calculated_distance = subprocess.getoutput(
+                    'cd ' + work_dir + ' && ./jumper')
+        else:
+            os.chdir(work_dir)
+            engine.addpath('.')
+            calculated_distance = engine.jumper()
+            os.chdir('../../')
 
-    time.sleep(2)
+        error = abs(int(calculated_distance) - int(original_distance))
+        error_in_total = error_in_total + error
+
+    mean_error = error_in_total / len(screenshots)
+    print(student_id + ' mean distance error ' + str(mean_error) +
+          ' executed in ' + str(round(time.time() - start_time, 2)) + 's')
+
+    shutil.rmtree(student_id)

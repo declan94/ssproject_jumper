@@ -1,3 +1,4 @@
+# DO NOT DELETE '__init__.py'
 # Import modules
 
 
@@ -7,8 +8,8 @@ def jumper():
     pass
 
     # Process screenshot
-    time = 0
+    distance = 0
     pass
 
-    # return press time as int
-    return int(time)
+    # return distance as int
+    return int(distance)
