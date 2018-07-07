@@ -19,7 +19,7 @@ int main()
     // Process screenshot
     int distance = 0;
 
-    // Print distance as int
+    // Print distance as rounded int
     cout << distance << endl;
 
     return 0;
