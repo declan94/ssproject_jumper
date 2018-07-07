@@ -2,19 +2,33 @@
 
 test.py 为调用学生程序的主模块
 
+## test 目录说明
+
+### ground_truth
+
+此文件夹下放置距离给出的示例，参考 [距离示例](./ground_truth/README.md)
+
+### upload_example
+
+此文件夹下放置提交的压缩包示例
+
+### upload_template
+
+此文件夹下放置提交的源代码模板和报告模板
+
 ## 提交
 
-- 你的作业应以 `zip 压缩文件` 的形式提交并以学号命名，如 `2016010000.zip`，不允许使用 `rar 压缩文件`
+- 你的作业应以 `zip 压缩文件` 的形式提交并以学号命名，如 `2016010000.zip`，不允许使用 `rar 压缩文件`，提交示例参考 [upload_example](./upload_example)
 
 - 该压缩文件打开后，应为单个文件夹且以学号命名，如 `2016010000`
 
 - 在该文件夹下，应包含 `两个文件夹` 和 `一个报告`
 
-  - 报告以 `学号_姓名_班级` 形式命名，如 `2016010000_张三_无61.pdf`
+  - 报告以 `学号_姓名_班级` 形式命名，如 `2016010000_张三_无61.pdf` 或 `2016010000_张三_无61.docx`，报告示例参考 [report.pdf](./upload_template/report.pdf)
 
-  - 一个文件夹为 `picture`，其中存放你的标注图片，标注图片均以 `整数距离_学号.png` 命名，如 `234_2016010000.png`，只允许提交 `png 图片`
+  - 一个文件夹为 `picture`，其中存放你的标注图片，标注图片均以 `整数距离_学号.png` 命名，如 `234_2016010000.png`，只允许提交 `png 图片`，参考 [upload_example](./upload_example)
 
-  - 另一个文件夹为 `python` （或 `matlab`、`cpp`），取决于你使用的语言，不允许提交多个此类文件夹（如同时提交了 `python` 和 `cpp` 文件夹）
+  - 另一个文件夹为 `python` （或 `matlab`、`cpp`），取决于你使用的语言，不允许提交多个此类文件夹（如同时提交了 `python` 和 `cpp` 文件夹），参考 [upload_example](./upload_example) 和 [upload_template](./upload_template)
 
 ### Python
 
