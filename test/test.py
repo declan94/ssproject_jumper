@@ -5,21 +5,29 @@ import subprocess
 import sys
 import time
 import zipfile
+import matlab.engine
 
+# Time-consuming, start only once
+engine = matlab.engine.start_matlab()
+
+# Prepare zip files
 uploads = []
 for upload_file in os.listdir("./uploads"):
     if upload_file.endswith(".zip"):
         uploads.append(upload_file)
 
+# Prepare screenshots
 screenshots = []
 for screenshot in os.listdir("./pictures"):
     if screenshot.endswith(".png"):
         screenshots.append(screenshot)
 
+# Loop over every student
 for upload_file in uploads:
     with zipfile.ZipFile("./uploads/" + upload_file, "r") as zip_ref:
         zip_ref.extractall(".")
 
+    # Check file structure
     student_id = upload_file[:upload_file.index('.')]
     if os.path.isdir('./' + student_id + '/python'):
         lang = 'python'
@@ -34,17 +42,17 @@ for upload_file in uploads:
         print('Broken upload structure! Exiting...')
         exit()
 
+    # Check test platform
     platform = sys.platform
     if platform != "win32" and platform != "darwin":
         print("Unsupported platform. Exiting...")
         exit()
 
+    # Check source files
     if lang == "matlab":
         if not os.path.isfile(work_dir + '/jumper.m'):
             print('Source code does not exist! Exiting...')
             exit()
-        import matlab.engine
-        engine = matlab.engine.start_matlab()
     elif lang == "python":
         if not os.path.isfile(work_dir + '/jumper.py'):
             print('Source code does not exist! Exiting...')
@@ -62,8 +70,10 @@ for upload_file in uploads:
                 print('Executable file does not exist! Exiting...')
                 exit()
 
+    # Begin test
     start_time = time.time()
     error_in_total = 0
+    engine.addpath(work_dir)
     for screenshot in screenshots:
         shutil.copy2('./pictures/' + screenshot, work_dir + '/autojump.png')
         original_distance = screenshot[:screenshot.index('_')]
@@ -80,16 +90,16 @@ for upload_file in uploads:
                 calculated_distance = subprocess.getoutput(
                     'cd ' + work_dir + ' && ./jumper')
         else:
-            os.chdir(work_dir)
-            engine.addpath('.')
             calculated_distance = engine.jumper()
-            os.chdir('../../')
 
         error = abs(int(calculated_distance) - int(original_distance))
         error_in_total = error_in_total + error
+    engine.rmpath(work_dir)
 
+    # Print mean error
     mean_error = error_in_total / len(screenshots)
     print(student_id + ' mean distance error ' + str(mean_error) +
           ' executed in ' + str(round(time.time() - start_time, 2)) + 's')
 
+    # Remove temp dir
     shutil.rmtree(student_id)
