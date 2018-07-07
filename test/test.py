@@ -94,7 +94,6 @@ for upload_file in uploads:
 
         error = abs(int(calculated_distance) - int(original_distance))
         error_in_total = error_in_total + error
-    engine.rmpath(work_dir)
 
     # Print mean error
     mean_error = error_in_total / len(screenshots)
