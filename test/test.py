@@ -45,11 +45,13 @@ for upload_file in uploads:
         exit()
 
     # Check source files
+    engine = None
     if lang == "matlab":
         if not os.path.isfile(work_dir + '/jumper.m'):
             print('Source code does not exist! Exiting...')
             exit()
         import matlab.engine
+        engine = matlab.engine.start_matlab()
     elif lang == "python":
         if not os.path.isfile(work_dir + '/jumper.py'):
             print('Source code does not exist! Exiting...')
@@ -70,10 +72,10 @@ for upload_file in uploads:
     # Begin test
     start_time = time.time()
     error_in_total = 0
+    engine.addpath(work_dir)
     for screenshot in screenshots:
         shutil.copy2('./pictures/' + screenshot, work_dir + '/autojump.png')
         original_distance = screenshot.split('_')[2]
-        print(original_distance)
         calculated_distance = 0
         if lang == "python":
             os.chdir(work_dir)
@@ -87,8 +89,6 @@ for upload_file in uploads:
                 calculated_distance = subprocess.getoutput(
                     'cd ' + work_dir + ' && ./jumper')
         else:
-            engine = matlab.engine.start_matlab()
-            engine.addpath(work_dir)
             calculated_distance = engine.jumper()
 
         error = abs(int(calculated_distance) - int(original_distance))
