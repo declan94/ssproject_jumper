@@ -5,7 +5,7 @@ function distance = jumper()
 
 % Process screenshot
 
-% return distance
+% return distance as int
 distance = 0;
 
 end

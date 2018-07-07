@@ -12,4 +12,4 @@ def jumper():
     pass
 
     # return distance as int
-    return int(distance)
+    return int(round(distance))
