@@ -26,7 +26,7 @@ test.py 为调用学生程序的主模块
 
   - 报告以 `学号_姓名_班级` 形式命名，如 `2016010000_张三_无61.pdf` 或 `2016010000_张三_无61.docx`，报告示例参考 [report.pdf](./upload_template/report.pdf)
 
-  - 一个文件夹为 `picture`，其中存放你的标注图片，标注图片均以 `整数距离_学号.png` 命名，如 `234_2016010000.png`，只允许提交 `png 图片`，参考 [upload_example](./upload_example)
+  - 一个文件夹为 `picture`，其中存放你的标注图片，标注图片均以 `整数距离_学号.png` 命名，如 `234_2016010000.png`，只允许提交 `png 图片`，并且保证图片 `边缘完整`，参考 [upload_example](./upload_example)
 
   - 另一个文件夹为 `python` （或 `matlab`、`cpp`），取决于你使用的语言，不允许提交多个此类文件夹（如同时提交了 `python` 和 `cpp` 文件夹），参考 [upload_example](./upload_example) 和 [upload_template](./upload_template)
 
